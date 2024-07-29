@@ -18,7 +18,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: echo ${{ github.workspace }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -28,6 +27,6 @@ jobs:
         cd ${{ github.workspace }}/packages/proto-loader/
         npm install
     - run: |
-        cd ${{ github.workspace }}/grpc-js/
+        cd ${{ github.workspace }}/packages/grpc-js/
         npm install
     - run: npm run test
