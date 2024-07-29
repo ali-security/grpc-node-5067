@@ -81,4 +81,4 @@ const runTests = checkTask(() => {
 
 const test = gulp.series(install, copyTestFixtures, runTests);
 
-export { install, lint, clean, cleanAll, compile, test };
+export { install, clean, cleanAll, compile, test };
