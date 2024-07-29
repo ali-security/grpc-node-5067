@@ -14,7 +14,7 @@ permissions:
 jobs:
   linux_build:
     name: Linux grpc-tools Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,7 +29,7 @@ jobs:
           path: artifacts/
   macos_build:
     name: Macos grpc-tools Build
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v2
         with:
@@ -42,7 +42,7 @@ jobs:
           path: artifacts/
   windows_build:
     name: Windows grpc-tools Build
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       matrix:
         arch: [ia32, x64]
@@ -61,7 +61,7 @@ jobs:
           path: artifacts/
   combine_artifacts:
     name: Combine grpc-tools artifacts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: [linux_build, macos_build, windows_build]
     steps:
       - uses: actions/download-artifact@v2
