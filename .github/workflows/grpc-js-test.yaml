@@ -25,9 +25,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g typescript
     - run: |
-        cd ./packages/proto-loader/
+        cd ${{ github.workspace }}/packages/proto-loader/
         npm install
     - run: |
-        cd ../grpc-js/
+        cd ${{ github.workspace }}/grpc-js/
         npm install
     - run: npm run test
