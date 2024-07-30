@@ -207,7 +207,6 @@ describe('Server idle timer', () => {
   });
 
   it('Should be able to make a request after going idle', function (done) {
-    this.skip();
     this.timeout(5000);
     client = TestClient.createFromServer(server);
     client.sendRequest(error => {
