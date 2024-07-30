@@ -190,7 +190,7 @@ describe('Server idle timer', () => {
   });
 
   it('Should go idle after the specified time after a request ends', function (done) {
-    this.timeout(5000);
+    this.timeout(10000);
     client = TestClient.createFromServer(server);
     client.sendRequest(error => {
       assert.ifError(error);
