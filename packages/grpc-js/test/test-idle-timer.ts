@@ -207,34 +207,33 @@ describe('Server idle timer', () => {
   });
 
   it('Should be able to make a request after going idle', function (done) {
-    done();
-    // this.skip();
-    // this.timeout(5000);
-    // client = TestClient.createFromServer(server);
-    // client.sendRequest(error => {
-    //   assert.ifError(error);
-    //   assert.strictEqual(
-    //     client!.getChannelState(),
-    //     grpc.connectivityState.READY
-    //   );
+    this.skip();
+    this.timeout(5000);
+    client = TestClient.createFromServer(server);
+    client.sendRequest(error => {
+      assert.ifError(error);
+      assert.strictEqual(
+        client!.getChannelState(),
+        grpc.connectivityState.READY
+      );
 
-    //   client!.waitForClientState(
-    //     Date.now() + 600,
-    //     grpc.connectivityState.IDLE,
-    //     err => {
-    //       if (err) return done(err);
+      client!.waitForClientState(
+        Date.now() + 600,
+        grpc.connectivityState.IDLE,
+        err => {
+          if (err) return done(err);
 
-    //       assert.strictEqual(
-    //         client!.getChannelState(),
-    //         grpc.connectivityState.IDLE
-    //       );
-    //       client!.sendRequest(error => {
-    //         assert.ifError(error);
-    //         done();
-    //       });
-    //     }
-    //   );
-    // });
+          assert.strictEqual(
+            client!.getChannelState(),
+            grpc.connectivityState.IDLE
+          );
+          client!.sendRequest(error => {
+            assert.ifError(error);
+            done();
+          });
+        }
+      );
+    });
   });
 
   it('Should go idle after the specified time after waitForReady ends', function (done) {
